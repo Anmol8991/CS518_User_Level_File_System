@@ -1,3 +1,5 @@
+
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -9,7 +11,7 @@
 #include <dirent.h>
 
 /* You need to change this macro to your TFS mount point*/
-#define TESTDIR "/tmp/mountdir"
+#define TESTDIR "/tmp/rn444/mountdir"
 
 #define N_FILES 100
 #define BLOCKSIZE 4096
@@ -125,6 +127,13 @@ int main(int argc, char **argv) {
 		}
 	}
 	printf("TEST 7: Sub-directory create success \n");
+
+	// if ((ret = rmdir(TESTDIR "/files")) < 0) {
+	// 	perror("rmdir");
+	// 	printf("TEST 8: failure. %s \n", TESTDIR "/files");
+	// 	exit(1);
+	// }
+	// printf("TEST 8: Directory removed success \n");
 
 
 	/* Close operation */	

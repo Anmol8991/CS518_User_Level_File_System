@@ -17,6 +17,10 @@
 #define MAX_INUM 1024
 #define MAX_DNUM 16384
 
+#define INODE_BITMAP_START 1
+#define DATABLOCK_BITMAP_START 2
+#define INODE_BLOCK_START 3
+#define DATA_BLOCK_START 67
 
 struct superblock {
 	uint32_t	magic_num;			/* magic number */
@@ -36,13 +40,13 @@ struct inode {
 	uint32_t	link;				/* link count */
 	int			direct_ptr[16];		/* direct pointer to data block */
 	int			indirect_ptr[8];	/* indirect pointer to data block */
-	struct stat	vstat;				/* inode stat */
+	struct stat	vstat;				/* inode stat (size is 144 bytes) */
 };
 
 struct dirent {
 	uint16_t ino;					/* inode number of the directory entry */
 	uint16_t valid;					/* validity of the directory entry */
-	char name[208];					/* name of the directory entry */
+	char name[250];					/* name of the directory entry */
 	uint16_t len;					/* length of name */
 };
 
